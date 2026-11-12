@@ -487,10 +487,17 @@ async function fetchEvents(
   center: { lat: number; lon: number },
 ): Promise<StoredEvent[]> {
   const year = range.start.slice(0, 4);
+  // Broad net: the user asked for every worthwhile event in the area to
+  // be picked up, so the search runs more, category-spanning queries
+  // than the original three (general, ongoing, category mix, hands-on /
+  // free, and drop-in angles). Quality is unchanged — extraction still
+  // requires verifiable dates in the target window and a real venue.
   const queries = [
     `${area.terms} イベント ${range.rangeLabel} 開催`,
     `${area.terms} 開催中 イベント ${range.label}`,
     `${area.terms} ${range.rangeLabel} 展示会 マルシェ ライブ 祭り`,
+    `${area.terms} ${range.rangeLabel} 体験 ワークショップ 無料 イベント`,
+    `${area.terms} イベント ${range.label} 当日参加 予約不要`,
   ];
   const responses = await Promise.all(
     queries.map((q) =>
@@ -589,7 +596,7 @@ async function fetchEvents(
     const kb = `${b.startDate}T${b.startTime || "00:00"}`;
     return ka < kb ? -1 : ka > kb ? 1 : 0;
   });
-  const top = events.slice(0, 30);
+  const top = events.slice(0, 50);
   // Best-effort venue coordinates for the map; failures leave nulls and
   // never fail the search itself.
   try {
