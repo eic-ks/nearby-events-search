@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&display=swap');
+@import "tailwindcss";
+@import "tailwindcss-safe-area";
+
+@theme {
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 28px;
+  --text-xl: 20px;
+  --text-xl--line-height: 28px;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 32px;
+  --text-3xl: 30px;
+  --text-3xl--line-height: 36px;
+  --text-4xl: 36px;
+  --text-4xl--line-height: 40px;
+  --text-5xl: 48px;
+  --text-5xl--line-height: 52px;
+  --font-mincho: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+:root {
+  color-scheme: light dark;
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --text: #1e2430;
+  --dim: #6e675c;
+  --border: #e8e2d8;
+  --accent: #d9481f;
+  --accent-ink: #ffffff;
+  --accent-soft: #fbe9e2;
+  --radius: 10px;
+  --space-surface: var(--surface);
+  --space-surface-alt: var(--surface);
+  --space-muted: var(--dim);
+  --space-border: var(--border);
+  --space-accent: var(--accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16130f;
+    --surface: #221e19;
+    --text: #f2ede4;
+    --dim: #a79c8d;
+    --border: #3a342b;
+    --accent: #f0683c;
+    --accent-ink: #1c0f08;
+    --accent-soft: #3d2318;
+  }
+}
+
+/* Phone tap targets: at least 32px tall. */
+@layer base {
+  button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) {
+    min-height: 2rem;
+  }
+}
+
+.font-mincho {
+  font-family: var(--font-mincho);
+}
+
+/* Map pins (hatch-maps marker HTML) */
+.pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 13px;
+  font-weight: 700;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.pin--center {
+  background: var(--text);
+  color: var(--bg);
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+}
+.pin--on {
+  outline: 3px solid var(--text);
+  outline-offset: 1px;
+}
+.map-selected {
+  background: var(--accent-soft);
+}

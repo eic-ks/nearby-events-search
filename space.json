@@ -1,0 +1,8 @@
+{
+  "runtime": "typescript",
+  "platformVersion": 28,
+  "entry": "client/dist/index.html",
+  "name": "周辺イベント検索アプリ",
+  "slug": "zhou-bian-ibentojian-suo-apuri",
+  "managedCronJobs": []
+}

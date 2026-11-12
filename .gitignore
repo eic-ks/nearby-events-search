@@ -1,0 +1,9 @@
+node_modules/
+client/dist/
+client/dist-cvm/
+server/dist/
+app.db
+app.db-shm
+app.db-wal
+*.tsbuildinfo
+*.webp
